@@ -1,0 +1,89 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1:3306
+-- Creato il: Mar 23, 2021 alle 07:26
+-- Versione del server: 5.7.24
+-- Versione PHP: 7.1.26
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `test`
+--
+DROP DATABASE IF EXISTS `test`;
+CREATE DATABASE IF NOT EXISTS `test` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `test`;
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `cambio`
+--
+
+DROP TABLE IF EXISTS `cambio`;
+CREATE TABLE IF NOT EXISTS `cambio` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `data` date NOT NULL,
+  `da_valuta` varchar(3) NOT NULL,
+  `a_valuta` varchar(3) NOT NULL,
+  `cambio` decimal(3,2) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `cambio`
+--
+
+INSERT INTO `cambio` (`id`, `data`, `da_valuta`, `a_valuta`, `cambio`) VALUES
+(1, '2015-04-01', 'STR', 'EUR', '1.80'),
+(2, '2015-04-01', 'STR', 'EUR', '0.90'),
+(3, '2015-04-01', 'USD', 'EUR', '1.19'),
+(4, '2015-04-02', 'STR', 'EUR', '0.93'),
+(5, '2015-04-03', 'USD', 'EUR', '1.13');
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `tabella`
+--
+
+DROP TABLE IF EXISTS `tabella`;
+CREATE TABLE IF NOT EXISTS `tabella` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `customer` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `valuta` text NOT NULL,
+  `value` decimal(4,2) NOT NULL,
+  `strvaluta` varchar(3) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `tabella`
+--
+
+INSERT INTO `tabella` (`id`, `customer`, `date`, `valuta`, `value`, `strvaluta`) VALUES
+(33, 1, '2015-04-01', '£', '50.00', 'STR'),
+(34, 2, '2015-04-01', '$', '66.10', 'USD'),
+(35, 2, '2015-04-02', '€', '12.00', 'EUR'),
+(36, 2, '2015-04-02', '£', '6.50', 'STR'),
+(37, 1, '2015-04-02', '£', '11.04', 'STR'),
+(38, 1, '2015-04-02', '€', '1.00', 'EUR'),
+(39, 1, '2015-04-03', '$', '23.05', 'USD'),
+(40, 2, '2015-04-04', '€', '6.50', 'EUR');
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
